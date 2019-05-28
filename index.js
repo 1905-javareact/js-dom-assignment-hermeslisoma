@@ -142,7 +142,17 @@ let alertColor = () => {
                 msg += `So you like ${prev.value} more now?`  
             else msg += `So you like ${prev.value} more than ${tmp} now?`       
             alert(msg);           
-            [...color].forEach(ch => ch.style.backgroundColor = prev.value)
+            [...color].forEach(ch => {
+                let label = document.createElement('label')
+                let str = ch.value.substr(0,1).toUpperCase() + ch.value.substr(1)              
+                let node = document.createTextNode(str)               
+                ch.nextSibling.remove()
+                ch.nextElementSibling.innerText = ''
+                label.appendChild(node)
+                let form = document.getElementById("firstForm")
+                form.insertBefore(label, ch.nextElementSibling)
+                ch.nextElementSibling.style.backgroundColor = prev.value
+            })
         })       
     })  
 }
