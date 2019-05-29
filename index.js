@@ -144,8 +144,9 @@ let alertColor = () => {
             alert(msg);           
             [...color].forEach(ch => {
                 let label = document.createElement('label')
-                let str = ch.value.substr(0,1).toUpperCase() + ch.value.substr(1)              
-                let node = document.createTextNode(str)               
+                let str = ch.nextSibling.textContent            
+                let node = document.createTextNode(str)
+                             
                 ch.nextSibling.remove()
                 ch.nextElementSibling.innerText = ''
                 label.appendChild(node)
